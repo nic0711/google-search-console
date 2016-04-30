@@ -21,6 +21,7 @@ import org.knime.core.node.NodeModel;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 import org.knime.core.node.port.PortObject;
+import org.knime.core.node.port.PortObjectSpec;
 import org.knime.core.node.port.PortType;
 
 import com.google.api.services.webmasters.model.WmxSite;
@@ -87,11 +88,10 @@ public class ListSitesNodeNodeModel extends NodeModel {
      * {@inheritDoc}
      */
     @Override
-    protected DataTableSpec[] configure(final DataTableSpec[] inSpecs)
+    protected PortObjectSpec[] configure(final PortObjectSpec[] inSpecs)
             throws InvalidSettingsException {
 
-        // TODO: generated method stub
-        return new DataTableSpec[]{null};
+        return new DataTableSpec[]{createSpec()};
     }
 
     /**

@@ -16,7 +16,7 @@ public class SearchConsoleClient {
 	Webmasters api;
 	
 	public SearchConsoleClient( GoogleCredential credential) {
-		api = new Webmasters.Builder(new NetHttpTransport(), new JacksonFactory(), credential ).build();
+		api = new Webmasters.Builder(new NetHttpTransport(), new JacksonFactory(), credential ).setApplicationName("KNIME Search Console").build();
 	
 	}
 	
