@@ -67,7 +67,8 @@ public class SearchQueryConfiguration {
 		
 		int i = 0;
 		for ( String it : items ) {
-			if ( it.equals( items ) ) return i++;
+			if ( it.equals( item ) ) return i;
+			i++;
 		}
 		
 		return -1;
