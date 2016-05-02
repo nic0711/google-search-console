@@ -11,9 +11,9 @@
     </fullDescription>
     
     <ports>
-        <inPort index="0" name="Google API Connection">Description of first input port...</inPort>
+        <inPort index="0" name="Google API Connection">Connection to Google API</inPort>
         
-		<outPort index="0" name="Site List">Description of first output port...</outPort>
+		<outPort index="0" name="Site List">List of sites accessible via user credentials.</outPort>
         
     </ports>    
     <views>

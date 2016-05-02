@@ -3,31 +3,26 @@
     <name>Site Search Analytics (P&amp;G)</name>
     
     <shortDescription>
-        
+        Query Search Console (Webmaster Tools) search data. 
     </shortDescription>
     
     <fullDescription>
-        <intro>Insert long description here...</intro>
+        <intro>Query your search traffic data with filters and parameters that you define. The method returns zero or more rows grouped by the row keys (dimensions) that you define. You must define a date range of one or more days.  More information at https://developers.google.com/webmaster-tools/</intro>
         
         
-        <option name="short name of first option (like in the dialog)">description of first option</option>
-        <option name="short name of second option (like in the dialog)">description of second option</option>
-        <!-- possibly more options that can also be grouped by tabs -->
-        <!--
-        <tab name="Standard Options">
-            <option name="short name of first option (like in the dialog)">description of first option</option>
-            <option name="short name of second option (like in the dialog)">description of second option</option>
-        </tab>
-        <tab name="Advanced Options">
-            <option name="short name of first advanced option (like in the dialog)">description of first advanced option</option>
-        </tab>
-        -->
+        <option name="Site">URL (e.g. http://www.pg.com)</option>
+        <option name="Search Type">web, image or video</option>
+        <option name="Dimensions">query, date, page, country, device or search appearance.  Not all dimensions can be used together.</option>
+        <option name="Start Date">Beginning date to include in query (inclusive)</option>
+        <option name="End Date">Ending date to include in query (inclusive)</option>
+        <option name="Max Rows">Number of rows to return via query.  Max is 5000, default is 1000.</option>
+        
     </fullDescription>
     
     <ports>
-        <inPort index="0" name="Google API Connection">Description of first input port...</inPort>
+        <inPort index="0" name="Google API Connection">Connection to Google API</inPort>
         <!-- possibly more input ports here-->
-        <outPort index="0" name="Query Results">Description of first output port...</outPort>
+        <outPort index="0" name="Query Results">Results of Query</outPort>
         <!-- possibly more output ports here-->
     </ports>    
     <views>

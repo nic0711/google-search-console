@@ -65,8 +65,8 @@ public class SearchAnalyticsQueryNodeNodeDialog extends StandardNodeDialogPane {
     				.add("Site", 		txtSite )
     				.add("Search Type", cbxSearchType )
     				.add("Dimensions", 	lstDimensions )
-    				.add("From Date", 	spnFromDate )
-    				.add("To Date", 	spnToDate)
+    				.add("Start Date", 	spnFromDate )
+    				.add("End Date", 	spnToDate)
     				.add("Max Rows", 	spnRowLimit)
     				
     				.build()

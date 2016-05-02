@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SearchAnalyticsQueryNode-Node extension for KNIME Workbench
-Bundle-SymbolicName: com.pg.google.api.searchconsole.query.node; singleton:=true
+Bundle-SymbolicName: com.pg.google.api.searchconsole;singleton:=true
 Bundle-Version: 1.0.0
-Bundle-ClassPath: searchanalyticsquerynode.jar,
- lib/google-api-services-webmasters-v3-rev16-1.21.0.jar
+Bundle-ClassPath: lib/google-api-services-webmasters-v3-rev16-1.21.0.jar,
+ googlesearchconsole.jar
 Bundle-Activator: com.pg.google.api.searchconsole.query.node.SearchAnalyticsQueryNodeNodePlugin
 Bundle-Vendor: P&G, eBusiness
 Require-Bundle: org.eclipse.core.runtime,
@@ -16,6 +16,6 @@ Require-Bundle: org.eclipse.core.runtime,
  com.pg.google.analytics;bundle-version="1.2.3",
  org.apache.commons.lang3;bundle-version="3.2.1"
 Bundle-ActivationPolicy: lazy
-Export-Package: com.pg.google.api.searchconsole.query.node
+Export-Package: com.pg.google.api.searchconsole
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 
