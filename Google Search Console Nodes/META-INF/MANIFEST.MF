@@ -17,4 +17,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.apache.commons.lang3;bundle-version="3.2.1"
 Bundle-ActivationPolicy: lazy
 Export-Package: com.pg.google.api.searchconsole.query.node
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 
