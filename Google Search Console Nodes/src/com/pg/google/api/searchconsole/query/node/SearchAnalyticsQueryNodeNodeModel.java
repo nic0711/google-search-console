@@ -53,6 +53,16 @@ public class SearchAnalyticsQueryNodeNodeModel extends NodeModel {
     @Override
     protected PortObject[] execute(PortObject[] inObjects, ExecutionContext exec) throws Exception {
 
+    	if ( configuration.getSite() == null || "".equals(configuration.getSite())) {
+    		throw new InvalidSettingsException("Site is required.");
+    	}
+    	if ( configuration.getStartDate() == null || "".equals(configuration.getStartDate())) {
+    		throw new InvalidSettingsException("Start date is required.");
+    	}
+    	if ( configuration.getEndDate() == null || "".equals(configuration.getEndDate())) {
+    		throw new InvalidSettingsException("End date is required.");
+    	}
+    	
     	GoogleApiConnectionPortObject apiConnection = (GoogleApiConnectionPortObject)inObjects[0];
     	SearchConsoleClient client = new SearchConsoleClient(apiConnection.getGoogleApiConnection().getCredential());
     	
@@ -68,7 +78,12 @@ public class SearchAnalyticsQueryNodeNodeModel extends NodeModel {
     	} catch (Exception exc) {
     		LOGGER.error(exc.getMessage());
     	}
-	    	
+	    
+    	if ( rows == null ) {
+    		LOGGER.warn("No results");
+    		rows = new ArrayList<ApiDataRow>();
+    	}
+    	
     	DataTableSpec outSpec = createSpec(configuration.getDimensions());
         BufferedDataContainer outContainer = exec.createDataContainer(outSpec);
         
@@ -81,10 +96,10 @@ public class SearchAnalyticsQueryNodeNodeModel extends NodeModel {
         	cells.add(new StringCell(configuration.getStartDate()));
         	cells.add(new StringCell(configuration.getEndDate()));
         	
+        	// Dimensions
         	for (String key : row.getKeys() ) {
         		cells.add(new StringCell(key));
         	}
-        	
         	
         	cells.add(new DoubleCell(row.getClicks()));
         	cells.add(new DoubleCell(row.getCtr()));
@@ -96,9 +111,6 @@ public class SearchAnalyticsQueryNodeNodeModel extends NodeModel {
         }
         
         outContainer.close();
-
-    	
-    	
     	
     	return new PortObject[] { outContainer.getTable() };
     }
@@ -142,7 +154,14 @@ public class SearchAnalyticsQueryNodeNodeModel extends NodeModel {
     @Override
     protected void validateSettings(final NodeSettingsRO settings)
             throws InvalidSettingsException {
-        // TODO: generated method stub
+       configuration.load(settings);
+       
+       if ( configuration.getSite() == null || "".equals(configuration.getSite())) {
+    	   throw new InvalidSettingsException("Site is required");
+       }
+       
+       
+       
     }
     
     /**

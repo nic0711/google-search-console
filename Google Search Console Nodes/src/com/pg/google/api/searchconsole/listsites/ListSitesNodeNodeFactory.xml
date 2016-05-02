@@ -3,32 +3,18 @@
     <name>List Sites (P&amp;G)</name>
     
     <shortDescription>
-        
+        Gets list of sites accessible via user credentials.
     </shortDescription>
     
     <fullDescription>
-        <intro>Insert long description here...</intro>
-        
-        
-        <option name="short name of first option (like in the dialog)">description of first option</option>
-        <option name="short name of second option (like in the dialog)">description of second option</option>
-        <!-- possibly more options that can also be grouped by tabs -->
-        <!--
-        <tab name="Standard Options">
-            <option name="short name of first option (like in the dialog)">description of first option</option>
-            <option name="short name of second option (like in the dialog)">description of second option</option>
-        </tab>
-        <tab name="Advanced Options">
-            <option name="short name of first advanced option (like in the dialog)">description of first advanced option</option>
-        </tab>
-        -->
+        <intro>Gets list of sites accessible via user credentials.</intro>
     </fullDescription>
     
     <ports>
-        <inPort index="0" name="In-Port name">Description of first input port...</inPort>
-        <!-- possibly more input ports here-->
-        <outPort index="0" name="Out-Port name">Description of first output port...</outPort>
-        <!-- possibly more output ports here-->
+        <inPort index="0" name="Google API Connection">Description of first input port...</inPort>
+        
+		<outPort index="0" name="Site List">Description of first output port...</outPort>
+        
     </ports>    
     <views>
         <view index="0" name="name of first view">Description of first view...</view>

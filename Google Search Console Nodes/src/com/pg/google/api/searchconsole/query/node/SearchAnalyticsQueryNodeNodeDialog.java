@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -42,6 +43,7 @@ public class SearchAnalyticsQueryNodeNodeDialog extends StandardNodeDialogPane {
 	private JTextField txtSite = new JTextField();
 	
 	private JList<String> lstDimensions = new JList<String>();
+	private JComboBox<String> cbxSearchType = new JComboBox<String>();
 	private JSpinner spnFromDate = new JSpinner(new SpinnerDateModel());
 	private JSpinner spnToDate = new JSpinner(new SpinnerDateModel());
 	
@@ -61,6 +63,7 @@ public class SearchAnalyticsQueryNodeNodeDialog extends StandardNodeDialogPane {
     		buildStandardPanel(
     			new PanelBuilder()
     				.add("Site", 		txtSite )
+    				.add("Search Type", cbxSearchType )
     				.add("Dimensions", 	lstDimensions )
     				.add("From Date", 	spnFromDate )
     				.add("To Date", 	spnToDate)
@@ -102,6 +105,12 @@ public class SearchAnalyticsQueryNodeNodeDialog extends StandardNodeDialogPane {
     	} catch ( ParseException pexc ) {
     		LOGGER.error(pexc.getMessage());
     	}
+    	
+    	cbxSearchType.removeAllItems();
+    	for ( String type : SearchQueryConfiguration.SEARCH_TYPES ) {
+    		cbxSearchType.addItem(type);
+    	}
+    	cbxSearchType.setSelectedItem(configuration.getSearchType());
     	
     }
     
