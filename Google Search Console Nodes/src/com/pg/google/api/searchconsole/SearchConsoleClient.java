@@ -44,7 +44,7 @@ public class SearchConsoleClient {
 		
 		SearchAnalyticsQueryRequest request = new SearchAnalyticsQueryRequest();
 		request.setDimensions(dimensions);
-		request.setRowLimit(10);
+		request.setRowLimit(rowLimit);
 		request.setStartDate(startDate);
 		request.setEndDate(endDate);
 		

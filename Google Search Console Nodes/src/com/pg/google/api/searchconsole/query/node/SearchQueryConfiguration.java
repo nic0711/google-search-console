@@ -20,6 +20,7 @@ public class SearchQueryConfiguration {
 	private Integer rowLimit = 1000;
 	private String searchType;
 	private List<String> fields = new ArrayList<String>();
+	private String aggregationType;
 	
 	private static Integer MAX_ROW_LIMIT = 5000;
 	public static SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
@@ -33,6 +34,7 @@ public class SearchQueryConfiguration {
 	private static String CFG_SEARCHTYPE = "cfg.search.search-type";
 	private static String CFG_FIELDS = "cfg.search.fields";
 	private static String CFG_SITE = "cfg.search.site";
+	private static String CFG_AGGREGATION = "cfg.search.aggregation-type";
 	
 	public static String[] DIMENSIONS = {"query", "date", "page", "country", "device", "searchAppearance" };
 	public static String[] FIELDS = /*rows*/ {"clicks", "ctr", "impressions", "keys", "position"};
@@ -41,6 +43,12 @@ public class SearchQueryConfiguration {
 	
 	
 	
+	public String getAggregationType() {
+		return aggregationType;
+	}
+	public void setAggregationType(String aggregationType) {
+		this.aggregationType = aggregationType;
+	}
 	public List<String> getFields() {
 		return fields;
 	}
@@ -119,6 +127,8 @@ public class SearchQueryConfiguration {
 		settings.addString(CFG_SEARCHTYPE, getSearchType());
 		settings.addStringArray(CFG_FIELDS, getFields().toArray(new String[] {}));
 		settings.addString(CFG_SITE, getSite());
+		settings.addString(CFG_AGGREGATION, getAggregationType());
+		
 		
 	}
 	
@@ -139,6 +149,7 @@ public class SearchQueryConfiguration {
 		setSearchType(settings.getString(CFG_SEARCHTYPE, SEARCH_TYPES[0]));
 		
 		setSite(settings.getString(CFG_SITE, ""));
+		setAggregationType(settings.getString(CFG_AGGREGATION, AGGREGATION_TYPES[0]));
 	}
 	
 	

@@ -44,6 +44,7 @@ public class SearchAnalyticsQueryNodeNodeDialog extends StandardNodeDialogPane {
 	
 	private JList<String> lstDimensions = new JList<String>();
 	private JComboBox<String> cbxSearchType = new JComboBox<String>();
+	private JComboBox<String> cbxAggregationType = new JComboBox<String>();
 	private JSpinner spnFromDate = new JSpinner(new SpinnerDateModel());
 	private JSpinner spnToDate = new JSpinner(new SpinnerDateModel());
 	
@@ -68,6 +69,7 @@ public class SearchAnalyticsQueryNodeNodeDialog extends StandardNodeDialogPane {
     				.add("Start Date", 	spnFromDate )
     				.add("End Date", 	spnToDate)
     				.add("Max Rows", 	spnRowLimit)
+    				.add("Aggregation Type", cbxAggregationType )
     				
     				.build()
     		)
@@ -79,6 +81,8 @@ public class SearchAnalyticsQueryNodeNodeDialog extends StandardNodeDialogPane {
     protected void loadSettingsFrom(NodeSettingsRO settings, PortObjectSpec[] specs) throws NotConfigurableException {
     
     	configuration.load(settings);
+    	
+    	txtSite.setText(configuration.getSite());
     	
     	// Build Dimension List:
     	lstDimensions.setListData(SearchQueryConfiguration.DIMENSIONS);
@@ -112,6 +116,13 @@ public class SearchAnalyticsQueryNodeNodeDialog extends StandardNodeDialogPane {
     	}
     	cbxSearchType.setSelectedItem(configuration.getSearchType());
     	
+    	cbxAggregationType.removeAllItems();
+    	for ( String type : SearchQueryConfiguration.AGGREGATION_TYPES ) {
+    		cbxAggregationType.addItem(type);
+    	}
+    	cbxAggregationType.setSelectedItem(configuration.getAggregationType());
+    	
+    	
     }
     
 	@Override
@@ -125,6 +136,10 @@ public class SearchAnalyticsQueryNodeNodeDialog extends StandardNodeDialogPane {
 		configuration.setEndDate(SearchQueryConfiguration.SDF.format(spnToDate.getValue()));
 		
 		try { configuration.setRowLimit((Integer)spnRowLimit.getValue()); } catch ( InvalidArgumentException exc ) { LOGGER.error(exc.getMessage()); }
+		
+		
+		configuration.setSearchType(cbxSearchType.getSelectedItem().toString());
+		configuration.setAggregationType(cbxAggregationType.getSelectedItem().toString());
 		
 		configuration.save(settings);
 		
